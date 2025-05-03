@@ -8,13 +8,14 @@ _Timeline sortTimeline(const _Timeline& timeline) {
     return newTimeline;
 }
 
-int minimumRedIntervalsToCoverBlue(const _Timeline& _red, const _Timeline& _blue) {
+std::pair<int, _Timeline> minimumRedIntervalsToCoverBlue(const _Timeline& _red, const _Timeline& _blue) {
     _Timeline red = _red;
     _Timeline blue = _blue;
     int i = 0;
     int count = 0;
     int n = red.size();
     
+    _Timeline resultant;
     for (const auto& b: blue) {
         int start_b = b.x, end_b = b.y;
         int best_end = -1;
@@ -29,11 +30,11 @@ int minimumRedIntervalsToCoverBlue(const _Timeline& _red, const _Timeline& _blue
         if (best_end < end_b) {
             continue;
         }
+        resultant.push_back(red[i]);
         count++;
     }
     
-    std::cout << count << '\n';
-    return count;
+    return std::make_pair(count, resultant);
 }
 
 void printTimeline(const _Timeline& timeline) {
@@ -47,7 +48,11 @@ void checkOverlapInTimelines(const _Timeline& red, const _Timeline& blue) {
     printTimeline(sortTimeline(red));
     printTimeline(sortTimeline(blue));
 
-    minimumRedIntervalsToCoverBlue(sortTimeline(red), sortTimeline(blue));
+    std::pair<int, _Timeline> res = minimumRedIntervalsToCoverBlue(sortTimeline(red), sortTimeline(blue));
+    std::cout << res.first << '\n';
+    for (auto intv: res.second) {
+        std::cout << intv << '\n';
+    }
     return;
 }
 
