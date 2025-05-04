@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <algorithm>
 #include <vector>
 
 enum class Direction {
@@ -7,25 +8,38 @@ enum class Direction {
     RIGHT
 };
 
-class _Grid {
-    int **arr = nullptr;
-    int rows = 0, cols = 0;
+using List = std::vector<int>;
+using Matrix = std::vector<std::vector<int>>;
+using Directions = std::vector<Direction>;
+using Path = std::vector<std::vector<Direction>>;
+
+class Grid {
+    Matrix m;
 
     public:
-    _Grid() {
-        std::cout << "Rows? ";
-        std::cin >> rows;
-        std::cout << "Cols? ";
-        std::cin >> cols;
+    Grid() {
+        int rows, cols;
+        std::cin >> rows >> cols;
+        m.resize(rows, std::vector<int>(cols));
         
-        arr = new int*[rows];
         for (int i = 0; i < rows; i++) {
-            arr[i] = new int[cols];
-        }
+            for (int j = 0; j < cols; j++) {
+                std::cin >> m[i][j];
+            }
+        } 
     }
 
-    std::vector<Direction> findMinimumCostPath(std::vector<std::vector<int>> grid);
-};
+    Grid(char h) {
+        m = {
+            {5, 1, 1},
+            {2, 4, 7},
+            {2, 4, 5},
+            {5, 6, 3}
+        };
+    }
 
-using Grid = std::vector<std::vector<int>>;
-using Directions = std::vector<Direction>;
+    Matrix getMatrix();
+    int getRows();
+    int getCols();
+    Directions findMinimumCostPath(Matrix);
+};

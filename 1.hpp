@@ -12,7 +12,7 @@ struct Interval {
     }
 
     friend std::ostream& operator<<(std::ostream& out, const Interval& interval) {
-        out << '(' << interval.x << ' ' << interval.y << ')';
+        out << '{' << interval.x << ' ' << interval.y << '}';
         return out;
     }
     
