@@ -111,6 +111,3 @@ g++ main.cpp 2.cpp -o pathfinder
 
 - C++11 or higher
 - GCC/G++ Compiler or any modern C++ IDE
-
----
-
