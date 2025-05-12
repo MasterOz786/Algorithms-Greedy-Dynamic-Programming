@@ -1,2 +1,10 @@
 .vscode/*
 *.tex
+__pycache__/*
+lib/*
+lib64
+include/*
+*.cfg
+share/*
+bin/*
+
