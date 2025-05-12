@@ -1,4 +1,3 @@
-
 # 🧩 Pathfinding & Interval Coverage Algorithms
 
 This repository contains two C++ console-based mini-projects:
@@ -8,7 +7,7 @@ This repository contains two C++ console-based mini-projects:
 
 ---
 
-## 📘 Project 1: Minimum Cost Grid Path Finder
+## �� Project 1: Minimum Cost Grid Path Finder
 
 ### 📌 Overview
 
@@ -63,51 +62,72 @@ blue = { {0, 2}, {5, 5}, {7, 10}, {11, 13} };
 
 ```
 [Sorted Red Timeline]
+{0 4} {2 5} {4 8} {9 10} {10 12} {11 12}
 [Sorted Blue Timeline]
+{0 2} {5 5} {7 10} {11 13}
 3
-{2, 5}
-{4, 8}
-{11, 12}
+{2 5}
+{4 8}
+{11 12}
 ```
+
+### 📊 Visualization
+
+The project now includes a Python script (`test_intervals.py`) that generates visual representations of the interval coverage problem. The script:
+
+- Creates PDF visualizations of intervals
+- Highlights selected red intervals that cover blue intervals
+- Includes test cases for verification
+- Uses matplotlib for clear, professional graphs
 
 ### 🛠️ How It Works
 
 - **Sorting**: Red and blue intervals are sorted based on start times
 - **Greedy Strategy**: For each blue interval, the best red interval that can fully cover it is selected
 - **Result**: Number of red intervals selected and which ones
+- **Visualization**: Generates PDF graphs showing the coverage
 
 ### 📚 Concepts
 
 - Greedy Algorithms
 - Interval Sorting & Selection
 - STL vectors and custom comparator logic
+- Data visualization with Python
 
 ---
 
 ## 📂 File Structure
 
 ```
-├── main.cpp         // Entry point for both projects
-├── 2.hpp            // Grid class header (Project 1)
-├── 2.cpp            // Grid logic implementation (Project 1)
-├── 1.hpp            // Interval class definition (Project 2)
+├── main.cpp           // Entry point for both projects
+├── 2.hpp             // Grid class header (Project 1)
+├── 2.cpp             // Grid logic implementation (Project 1)
+├── 1.hpp             // Interval class definition (Project 2)
+├── 1.cpp             // Interval coverage implementation (Project 2)
+├── test_intervals.py // Visualization and testing script
 ```
 
 ---
 
 ## 🔧 Build & Run
 
-To compile both parts in a single file or selectively:
+To compile and run the C++ projects:
 ```bash
 g++ main.cpp 2.cpp -o pathfinder
 ./pathfinder
 ```
 
-> You can switch between projects by commenting/uncommenting `main()` contents for each part.
+To generate interval visualizations:
+```bash
+python3 test_intervals.py
+```
+
+> The visualization script requires matplotlib and numpy.
 
 ---
 
 ## ✅ Requirements
 
 - C++11 or higher
-- GCC/G++ Compiler or any modern C++ IDE
+- GCC/G++ Compiler
+- Python 3.x with matplotlib and numpy (for visualizations)
